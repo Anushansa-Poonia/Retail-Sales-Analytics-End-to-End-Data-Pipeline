@@ -220,4 +220,181 @@ By presenting both, the goal is to give users the option to choose the experienc
 The Power BI dashboard brings together insights generated in the previous steps and provides an interactive view into sales trends, customer behavior, and returns.
 
 ---
+## DAX Measures
+
+Key measures used in the dashboard include:
+```dax
+Total Revenue :=
+SUM ( sales_summary[total_revenue] )
+
+Total Quantity Sold :=
+SUM ( sales_summary[total_quantity] )
+
+Total Invoices :=
+DISTINCTCOUNT ( sales_summary[invoice] )
+
+Revenue per Customer :=
+DIVIDE ( [Total Revenue], [Total Invoices] )
+
+Average Order Value :=
+DIVIDE ( [Total Revenue], [Total Invoices] )
+
+Total Returns Value :=
+SUM ( returns_summary[total_returns_value] )
+
+Returns Percentage :=
+DIVIDE ( [Total Returns Value], [Total Revenue] )
+
+Number of Customers :=
+DISTINCTCOUNT ( customer_activity[customer_id] )
+```
+## DAX Calculated Columns
+I created one calculated column (Costumer Type) specifically for the costumer_activity table, to classify costumers according to the amount of months they were active. Costumers are classified as **"Active"**, **"Normal"** or **"Inactive"**. This column becomes specially useful when using it as a slicer.
+The formula is:
+```dax
+Customer Type = 
+IF(
+    [active_months] <= 2, 
+    "Inactive", 
+    IF(
+        [active_months] <= 5, 
+        "Normal", 
+        "Active"
+    )
+)  
+```
+## Dashboard Visual Breakdown
+
+Each visual in the dashboard is designed with clear business logic and analytical intent, ensuring that insights are actionable rather than purely descriptive.
+
+### Key Performance Indicators (KPIs)
+
+The top section of the dashboard highlights the core performance metrics:
+
+- Total Revenue  
+- Total Quantity Sold  
+- Revenue per Customer  
+- Returns Percentage  
+- Total Returns Count  
+- Total Returns Value  
+
+Interactive tooltips provide additional trend analysis for deeper exploration:
+
+- Total Quantity Sold over time (Line Chart)  
+- Revenue per Customer over time (Line Chart)  
+- Total Returns Value vs Total Revenue by Week (Stacked Area Chart)  
+- Total Returns Count over time (Line Chart)  
+
+---
+
+### Revenue Trend Analysis
+
+**Total Revenue Over Time**  
+A line chart showing monthly and yearly revenue patterns, enabling trend identification and seasonality detection.
+
+---
+
+### Customer Insights
+
+A detailed table visualization presenting:
+
+- Customer  
+- Country  
+- Active Months  
+- Customer Type  
+- Average Spend  
+- Total Revenue  
+
+This section supports segmentation analysis and highlights high-value customers.
+
+---
+
+### Returns Analysis Section
+
+This section evaluates return behavior and financial impact through:
+
+- **Total Returns Value Over Time** – Line chart showing monthly and yearly return trends  
+- **Returns by Country (USD)** – Treemap visualizing return distribution geographically  
+- **Revenue vs Returns by Product** – Combination chart displaying Total Revenue (columns) and Return Count (line) by product  
+
+---
+
+### Customer Loyalty Impact
+
+**Number of Customers & Total Revenue by Active Months**
+
+A stacked column and line chart illustrating how customer loyalty (measured by active months) correlates with revenue contribution and transaction volume.
+
+This visualization clearly demonstrates how long-term engagement drives higher revenue performance.
+
+---
+
+### AOV & Pricing Trends
+
+A line chart comparing:
+
+- Average Order Value (AOV)  
+- Average Product Price  
+
+This helps identify seasonal peaks, purchasing behavior shifts, and pricing stability patterns.
+
+---
+
+### Slicers (Global Filters)
+
+All visuals are interactively filtered using:
+
+- Customer Type  
+- Year  
+- Country  
+
+These slicers allow users to dynamically explore performance across segments and time periods.
+
+---
+
+## Conclusions
+
+### Project Reflection
+
+This end-to-end analytics solution demonstrates:
+
+- Integration of Python, SQL, and Power BI within a structured data workflow  
+- The importance of robust data cleaning prior to analysis  
+- Transformation of raw transactional data into interactive business intelligence  
+- Enhanced usability through dual-theme dashboard design  
+
+This project goes beyond technical execution by emphasizing clarity, business relevance, and decision support.
+
+---
+
+## Key Business Insights
+
+### Customer Engagement & Revenue
+
+- Although most customers were classified as "Inactive" or "Normal," the "Active" segment (27% of customers – 1,597 out of 5,942) generated nearly 80% of total revenue ($13.37M out of $17.37M).  
+- This demonstrates a strong Pareto distribution (80/20 principle), where a minority of customers drive the majority of business value.  
+- Revenue contribution increases significantly with customer activity level, reinforcing the importance of retention and loyalty strategies.
+
+---
+
+### Returns & Risk Patterns
+
+- Inactive customers showed relatively higher return behavior.  
+- Overall returns remained below 20%, indicating generally healthy customer satisfaction.  
+- The United Kingdom generated the highest revenue ($14M) and the highest return value ($906.7K), largely due to its dominant customer base.
+
+---
+
+### Product & Pricing Insights
+
+- "Regency Cakestand 3 Tier" emerged as the highest revenue-generating product, exceeding $277K in sales.  
+- Average product pricing remained relatively stable throughout the year.  
+- Average Order Value (AOV) exhibited seasonal peaks, likely driven by bundled or multi-item purchases.  
+- Certain regions, particularly the United Kingdom, showed noticeable pricing variability across segments.
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
