@@ -201,3 +201,23 @@ All queries are executed using `sqlite3` and exported to CSV for use in Power BI
 
 ## Dashboard (Power BI)
 ### Dashboard Theme Rationale
+To provide flexibility and enhance user experience, I’ve designed **two versions of the dashboard** using Power BI: one in a **light theme**, and one in a **dark theme**.
+
+I genuinely like both — and I believe each has its own strengths, depending on the **audience**, the **context**, or even the **time of day** they’re being used.
+
+![thumbnail](https://github.com/user-attachments/assets/29d6cfba-f979-4120-87cf-a49556f1c655)
+
+- **Light Version**  
+  Ideal for executive presentations, printed reports, and daytime reviews.  
+  It offers a clean, minimal aesthetic that works well for clarity and formal communication.
+
+- **Dark Version**  
+  Designed with modern usability in mind — great for internal teams, large display screens, or evening usage.  
+  It enhances contrast and helps data patterns pop visually.
+
+By presenting both, the goal is to give users the option to choose the experience that best fits their needs — whether it’s clarity in the boardroom or focus during deep-dive analytics.
+
+The Power BI dashboard brings together insights generated in the previous steps and provides an interactive view into sales trends, customer behavior, and returns.
+
+---
+
