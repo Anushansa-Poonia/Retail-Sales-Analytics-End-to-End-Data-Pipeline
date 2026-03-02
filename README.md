@@ -23,7 +23,6 @@ Although Power BI provides built-in transformation capabilities, Python and SQL 
 ---
 
 ## Dataset
-![Product Analysis](images/product_analysis_dashboard.jpeg)
 
 This project uses the **Online Retail dataset** from the UCI Machine Learning Repository.
 
@@ -36,8 +35,6 @@ Both sheets were merged, cleaned, and processed using Python. The cleaned datase
 
 ### Sample Dataset View
 
-![Dataset Preview](images/dataset_preview.png)
-
----
+![Product Analysis](images/product_analysis_dashboard.jpeg)
 
 # Part 1: ETL & Data Cleaning with Python
