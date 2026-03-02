@@ -23,6 +23,7 @@ Although Power BI provides built-in transformation capabilities, Python and SQL 
 ---
 
 ## Dataset
+![Product Analysis](images/product_analysis_dashboard.jpeg)
 
 This project uses the **Online Retail dataset** from the UCI Machine Learning Repository.
 
